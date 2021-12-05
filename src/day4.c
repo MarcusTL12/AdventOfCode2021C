@@ -18,10 +18,10 @@ static int *get_nums(char *inp, size_t *amt_nums) {
 
 static char *next_board(char *c, int *board) {
     for (size_t i = 0; i < 25; i++) {
-        while (!isdigit(*c)) c++;
         *board = atoi(c);
         board++;
-        while (isdigit(*c)) c++;
+        while (*c && isdigit(*c)) c++;
+        while (*c && !isdigit(*c)) c++;
     }
 
     return c;
@@ -45,20 +45,50 @@ static int get_score(int *board) {
     return acc * any;
 }
 
-int play_board(int *nums, int *board, size_t *moves) { return 0; }
+static int play_board(int *nums, int *board, size_t *moves) {
+    while (true) {
+        (*moves)++;
+        for (size_t i = 0; i < 25; i++) {
+            board[i] = board[i] == *nums ? -1 : board[i];
+        }
+
+        int score = get_score(board);
+
+        if (score) {
+            return score * *nums;
+        }
+
+        nums++;
+    }
+}
 
 void d4p1() {
-    char *inp = file_read_full("input/day4/ex1");
+    char *inp = file_read_full("input/day4/input");
 
     size_t amt_nums;
     int *nums = get_nums(inp, &amt_nums);
 
     char *c = inp;
     while (*c != '\n') c++;
+    while (*c == '\n') c++;
 
     int board[5 * 5];
 
-    c = next_board(c, board);
+    size_t lowest_steps = -1;
+    int score;
+
+    while (*c) {
+        c = next_board(c, board);
+
+        size_t moves = 0;
+        int cur_score = play_board(nums, board, &moves);
+        if (moves < lowest_steps) {
+            lowest_steps = moves;
+            score = cur_score;
+        }
+    }
+
+    printf("%i\n", score);
 
     free(nums);
     free(inp);

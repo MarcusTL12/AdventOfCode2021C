@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../AoC_C_utils/src/bitfield.h"
 #include "../AoC_C_utils/src/file_util.h"
 
 const size_t N = 1000;
@@ -49,7 +50,7 @@ void d5p1() {
 
 void d5p2() {
     char *inp = file_read_full("input/day5/input");
-    char *grid = malloc(N * N);
+    char *grid = malloc(N * N * 2);
     memset(grid, 0, N * N);
 
     for (char *c = inp; *c;) {
