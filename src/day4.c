@@ -94,4 +94,34 @@ void d4p1() {
     free(inp);
 }
 
-void d4p2() {}
+void d4p2() {
+    char *inp = file_read_full("input/day4/input");
+
+    size_t amt_nums;
+    int *nums = get_nums(inp, &amt_nums);
+
+    char *c = inp;
+    while (*c != '\n') c++;
+    while (*c == '\n') c++;
+
+    int board[5 * 5];
+
+    size_t highest_steps = 0;
+    int score;
+
+    while (*c) {
+        c = next_board(c, board);
+
+        size_t moves = 0;
+        int cur_score = play_board(nums, board, &moves);
+        if (moves > highest_steps) {
+            highest_steps = moves;
+            score = cur_score;
+        }
+    }
+
+    printf("%i\n", score);
+
+    free(nums);
+    free(inp);
+}
