@@ -15,8 +15,6 @@ int main(int argc, char **argv) {
         printf("Enter day and part as command line arguments,\n");
         printf("Or run all by passing \"all\" as parameter.\n");
     } else if (argc == 2) {
-        printf("Does not currently work!\n");
-        return 0;
         printf("Running all days:\n");
         printf("===========================\n");
         clock_t timer = clock();
@@ -31,7 +29,7 @@ int main(int argc, char **argv) {
 
             subtimer = clock();
             printf("Part 2:\n");
-            // days[2 * i + 1]();
+            days[2 * i + 1]();
             print_time(clock() - subtimer);
             printf("\n");
         }
