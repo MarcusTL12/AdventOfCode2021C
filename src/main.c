@@ -15,32 +15,55 @@ int main(int argc, char **argv) {
         printf("Enter day and part as command line arguments,\n");
         printf("Or run all by passing \"all\" as parameter.\n");
     } else if (argc == 2) {
-        printf("Running all days:\n");
-        printf("===========================\n");
-        clock_t timer = clock();
-        for (size_t i = 0; i < AMT_DAYS; i++) {
+        if (*argv[1] == 'a') {
+            printf("Running all days:\n");
+            printf("===========================\n");
+            clock_t timer = clock();
+            for (size_t i = 0; i < AMT_DAYS; i++) {
+                clock_t subtimer = clock();
+                printf("---------------------------\n");
+                printf("Running Day %zu\n", i + 1);
+                printf("Part 1:\n");
+                days[2 * i]();
+                print_time(clock() - subtimer);
+                printf("\n");
+
+                subtimer = clock();
+                printf("Part 2:\n");
+                days[2 * i + 1]();
+                print_time(clock() - subtimer);
+                printf("\n");
+            }
+            printf("===========================\n");
+            print_time(clock() - timer);
+        } else {
+            size_t day = atoi(argv[1]) - 1;
+
+            if (day < 0 || day >= AMT_DAYS) {
+                printf("Must give day between 1 and %d!\n", AMT_DAYS);
+                return 0;
+            }
+
             clock_t subtimer = clock();
             printf("---------------------------\n");
-            printf("Running Day %zu\n", i + 1);
+            printf("Running Day %zu\n", day + 1);
             printf("Part 1:\n");
-            days[2 * i]();
+            days[2 * day]();
             print_time(clock() - subtimer);
             printf("\n");
 
             subtimer = clock();
             printf("Part 2:\n");
-            days[2 * i + 1]();
+            days[2 * day + 1]();
             print_time(clock() - subtimer);
             printf("\n");
         }
-        printf("===========================\n");
-        print_time(clock() - timer);
     } else {
         int day = atoi(argv[1]) - 1;
         int part = atoi(argv[2]) - 1;
 
-        if (day < 0 || day > 24) {
-            printf("Must give day between 1 and 25!\n");
+        if (day < 0 || day >= AMT_DAYS) {
+            printf("Must give day between 1 and %d!\n", AMT_DAYS);
             return 0;
         }
 
