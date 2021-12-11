@@ -32,7 +32,6 @@ int main(int argc, char **argv) {
                 printf("Part 2:\n");
                 days[2 * i + 1]();
                 print_time(clock() - subtimer);
-                printf("\n");
             }
             printf("===========================\n");
             print_time(clock() - timer);
@@ -45,7 +44,6 @@ int main(int argc, char **argv) {
             }
 
             clock_t subtimer = clock();
-            printf("---------------------------\n");
             printf("Running Day %zu\n", day + 1);
             printf("Part 1:\n");
             days[2 * day]();
@@ -56,7 +54,6 @@ int main(int argc, char **argv) {
             printf("Part 2:\n");
             days[2 * day + 1]();
             print_time(clock() - subtimer);
-            printf("\n");
         }
     } else {
         int day = atoi(argv[1]) - 1;
