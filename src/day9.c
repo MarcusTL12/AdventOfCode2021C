@@ -5,7 +5,7 @@
 
 #include "../AoC_C_utils/src/file_util.h"
 
-const int64_t dirs[8] = {1, 0, -1, 0, 0, 1, 0, -1};
+static const int64_t dirs[8] = {1, 0, -1, 0, 0, 1, 0, -1};
 
 void d9p1() {
     char *inp = file_read_full("input/day9/input");
