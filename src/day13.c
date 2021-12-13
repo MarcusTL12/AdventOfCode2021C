@@ -56,7 +56,7 @@ void d13p1() {
     for (size_t i = 0; i < coords.len; i++) {
         size_t *coord = vec_get(&coords, i);
         maxx = coord[0] > maxx ? coord[0] : maxx;
-        maxy = coord[0] > maxy ? coord[0] : maxy;
+        maxy = coord[1] > maxy ? coord[1] : maxy;
     }
 
     size_t width = maxx + 1, height = maxy + 1;
