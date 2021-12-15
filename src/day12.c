@@ -4,7 +4,7 @@
 
 #include "../AoC_C_utils/src/bitfield.h"
 #include "../AoC_C_utils/src/file_util.h"
-#include "../hashmap.c/hashmap.h"
+#include "../AoC_C_utils/hashmap.c/hashmap.h"
 
 typedef struct {
     char *s;
