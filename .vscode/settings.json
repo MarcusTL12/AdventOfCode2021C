@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "file_util.h": "c"
+        "file_util.h": "c",
+        "stdint.h": "c",
+        "priority_queue.h": "c"
     }
 }
