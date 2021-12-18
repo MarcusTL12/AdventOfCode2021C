@@ -10,8 +10,8 @@
             "name": "Debug",
             "program": "${workspaceFolder}/a.out",
             "args": [
-                "14",
-                "1"
+                "18",
+                "2"
             ],
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "debug build"
