@@ -3,7 +3,7 @@
 #include "../AoC_C_utils/src/file_util.h"
 #include "../AoC_C_utils/src/vector.h"
 
-static vec_t parse_input(char *filename) {
+static void parse_input(char *filename) {
     // vec_t v = vec_create(sizeof)
 }
 
