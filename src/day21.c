@@ -81,8 +81,8 @@ static point_t rec(key_t k, struct hashmap *memo) {
 }
 
 void d21p2() {
-    struct hashmap *memo =
-        hashmap_new(sizeof(key_t), 0, 0, 0, key_hash, key_cmp, NULL, NULL);
+    struct hashmap *memo = hashmap_new(sizeof(key_t), 21 * 21 * 10 * 10 * 2, 0,
+                                       0, key_hash, key_cmp, NULL, NULL);
 
     point_t p = rec(
         (key_t){(point_t){p1_start, p2_start}, (point_t){0, 0}, false}, memo);
