@@ -32,6 +32,7 @@
         "system_error": "c",
         "tuple": "c",
         "typeinfo": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "unistd.h": "c"
     }
 }
