@@ -304,7 +304,7 @@ void d19p1() {
     free(ids);
 }
 
-void d19p2() {
+void _d19p2() {
     scanner_t *scanners;
     point_t *points;
     size_t amt_scanners;
@@ -328,6 +328,70 @@ void d19p2() {
                             fixed[j] = 1;
                             *(cur_scanner_loc++) = p;
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    size_t ans = 0;
+
+    for (size_t i = 0; i < amt_scanners; i++) {
+        for (size_t j = i + 1; j < amt_scanners; j++) {
+            point_t p = sub_pts(scanner_locs[i], scanner_locs[j]);
+            size_t d = llabs(p.x) + llabs(p.y) + llabs(p.z);
+            ans = d > ans ? d : ans;
+        }
+    }
+
+    printf("%zu\n", ans);
+
+    free(fixed);
+    free(scanners);
+    free(points);
+}
+
+void d19p2() {
+    size_t num_cpus = sysconf(_SC_NPROCESSORS_ONLN);
+    multithread_args_t *m_args = malloc(sizeof(multithread_args_t) * num_cpus);
+    pthread_t *ids = malloc(sizeof(pthread_t) * num_cpus);
+
+    scanner_t *scanners;
+    point_t *points;
+    size_t amt_scanners;
+    parse_input("input/day19/input", &scanners, &points, &amt_scanners);
+    char *fixed = malloc(amt_scanners);
+    memset(fixed, 0, amt_scanners);
+    fixed[0] = 1;
+
+    point_t *scanner_loc_buf =
+        malloc(sizeof(point_t) * (amt_scanners / num_cpus + 1) * num_cpus);
+    for (size_t i = 0; i < num_cpus; i++) {
+        m_args[i].pts = scanner_loc_buf + amt_scanners / num_cpus + 1;
+        m_args[i].start_j = i;
+        m_args[i].step = num_cpus;
+        m_args[i].amt_scanners = amt_scanners;
+        m_args[i].fixed = fixed;
+        m_args[i].scanners = scanners;
+    }
+
+    point_t *scanner_locs = malloc(sizeof(point_t) * amt_scanners);
+    scanner_locs[0] = (point_t){0, 0, 0};
+    point_t *cur_scanner_loc = scanner_locs + 1;
+
+    while (amt_fixed(fixed, amt_scanners) < amt_scanners) {
+        for (size_t i = 0; i < amt_scanners; i++) {
+            if (fixed[i]) {
+                for (size_t th_ind = 0; th_ind < num_cpus; th_ind++) {
+                    m_args[th_ind].i = i;
+                    m_args[th_ind].amt_found = 0;
+                    pthread_create(ids + th_ind, NULL, threaded_loop,
+                                   m_args + th_ind);
+                }
+                for (size_t th_ind = 0; th_ind < num_cpus; th_ind++) {
+                    pthread_join(ids[th_ind], NULL);
+                    for (size_t pi = 0; pi < m_args[th_ind].amt_found; pi++) {
+                        *(cur_scanner_loc++) = m_args[th_ind].pts[pi];
                     }
                 }
             }
