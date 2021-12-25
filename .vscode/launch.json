@@ -10,7 +10,7 @@
             "name": "Debug",
             "program": "${workspaceFolder}/a.out",
             "args": [
-                "22",
+                "23",
                 "1"
             ],
             "cwd": "${workspaceFolder}",
