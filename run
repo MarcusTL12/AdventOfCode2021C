@@ -48,11 +48,11 @@ with open("build.ninja", "w") as ninja:
     ninja.write(f"l_flags = {link_lib_string}\n")
     ninja.write(f"""
 rule cc
-    command = clang{" -g" if debug else " -O3"} -o $out -c $in
+    command = clang{" -g" if debug else " -flto -O3"} -o $out -c $in
 """)
     ninja.write(f"""
 rule link
-    command = clang $c_flags -o $out $in $l_flags
+    command = clang -flto $c_flags -o $out $in $l_flags
 
 """)
     filenames = []
