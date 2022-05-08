@@ -2,10 +2,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/bitfield.h"
-#include "../AoC_C_utils/src/file_util.h"
-#include "../AoC_C_utils/src/show.h"
-#include "../AoC_C_utils/src/vector.h"
+#include "aoc_util/bitfield.h"
+#include "aoc_util/file_util.h"
+#include "aoc_util/show.h"
+#include "aoc_util/vector.h"
 
 static void parse_input(char *filename, vec_t *coords, vec_t *folds) {
     *coords = vec_create(2 * sizeof(size_t));

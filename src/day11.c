@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/file_util.h"
 
 static const int64_t dirs[16] = {
     0, 1, 1, 1, 1, 0, 1, -1, 0, -1, -1, -1, -1, 0, -1, 1,

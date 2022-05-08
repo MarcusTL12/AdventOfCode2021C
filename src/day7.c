@@ -2,8 +2,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/array_util.h"
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/array_util.h"
+#include "aoc_util/file_util.h"
 
 static int64_t *parse_input(char *filename, size_t *amt_nums_) {
     char *inp = file_read_full(filename);

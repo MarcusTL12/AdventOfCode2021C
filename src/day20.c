@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../AoC_C_utils/src/bitfield.h"
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/bitfield.h"
+#include "aoc_util/file_util.h"
 
 static char *parse_input(char *filename, char *rules, size_t *w_, size_t *h_) {
     char *inp = file_read_full(filename);

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/file_util.h"
 
 static uint8_t parse_input(char *filename, size_t *init, uint8_t *insertions) {
     char *inp = file_read_full(filename);

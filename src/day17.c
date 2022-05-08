@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/file_util.h"
 
 typedef struct {
     int64_t minx, maxx, miny, maxy;

@@ -3,8 +3,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/file_util.h"
-#include "../AoC_C_utils/src/vector.h"
+#include "aoc_util/file_util.h"
+#include "aoc_util/vector.h"
 
 typedef struct {
     int64_t x0, x1, y0, y1, z0, z1;

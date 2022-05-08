@@ -1,4 +1,4 @@
-build
+build*
 .ninja_deps
 .ninja_log
 a.out

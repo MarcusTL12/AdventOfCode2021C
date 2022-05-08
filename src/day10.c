@@ -2,9 +2,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/file_util.h"
-#include "../AoC_C_utils/src/show.h"
-#include "../AoC_C_utils/src/vector.h"
+#include "aoc_util/file_util.h"
+#include "aoc_util/show.h"
+#include "aoc_util/vector.h"
 
 static char close_bracket(char c) {
     switch (c) {

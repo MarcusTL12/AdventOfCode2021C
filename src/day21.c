@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../AoC_C_utils/hashmap.c/hashmap.h"
+#include "aoc_util/hashmap.h"
 
 const size_t p1_start = 5, p2_start = 8;
 

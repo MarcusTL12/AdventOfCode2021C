@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/file_util.h"
 
 void d6p1() {
     char *inp = file_read_full("input/day6/input");
