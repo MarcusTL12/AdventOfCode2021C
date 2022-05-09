@@ -37,3 +37,7 @@ add_executable(
 )
 
 target_link_libraries(aoc aoc_util pthread)
+
+set(CMAKE_C_FLAGS_RELEASE "-O3")
+
+set(CMAKE_C_FLAGS_DEBUG "-O0 -g")
