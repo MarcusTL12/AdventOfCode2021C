@@ -2,8 +2,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/combinatorics.h"
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/combinatorics.h"
+#include "aoc_util/file_util.h"
 
 void d8p1() {
     char *inp = file_read_full("input/day8/input");

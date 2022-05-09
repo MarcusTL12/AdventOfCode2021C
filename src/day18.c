@@ -2,8 +2,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/file_util.h"
-#include "../AoC_C_utils/src/vector.h"
+#include "aoc_util/file_util.h"
+#include "aoc_util/vector.h"
 
 // type = 0: Leaf. Value saved as (size_t)left;
 // type = 1: Branch. left and right point to children nodes.

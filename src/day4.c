@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/file_util.h"
 
 static int *get_nums(char *inp, size_t *amt_nums) {
     *amt_nums = 1;

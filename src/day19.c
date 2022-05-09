@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #include "../AoC_C_utils/hashmap.c/hashmap.h"
-#include "../AoC_C_utils/src/file_util.h"
+#include "aoc_util/file_util.h"
 
 typedef struct {
     int64_t x, y, z;

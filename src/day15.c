@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../AoC_C_utils/src/file_util.h"
-#include "../AoC_C_utils/src/priority_queue.h"
+#include "aoc_util/file_util.h"
+#include "aoc_util/priority_queue.h"
 
 static const int64_t dirs[8] = {1, 0, -1, 0, 0, 1, 0, -1};
 

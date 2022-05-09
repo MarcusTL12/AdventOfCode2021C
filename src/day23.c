@@ -4,8 +4,8 @@
 #include <string.h>
 
 #include "../AoC_C_utils/hashmap.c/hashmap.h"
-#include "../AoC_C_utils/src/file_util.h"
-#include "../AoC_C_utils/src/priority_queue.h"
+#include "aoc_util/file_util.h"
+#include "aoc_util/priority_queue.h"
 
 typedef struct {
     uint8_t data[4];
@@ -59,7 +59,7 @@ static int key_cmp(const void *a, const void *b, void *udata) {
     return memcmp(a, b, *(size_t *)a);
 }
 
-static size_t pow10(size_t n) {
+static size_t ipow10(size_t n) {
     size_t acc = 1;
     for (size_t i = 0; i < n; i++) {
         acc *= 10;
@@ -133,7 +133,7 @@ static size_t solve(floor_t *_floors, size_t amt_floors) {
                                 int64_t new_energy =
                                     energy -
                                     (depth + 1 + abs_diff(room_inds(i), j)) *
-                                        pow10(hallway->data[j] - 1);
+                                        ipow10(hallway->data[j] - 1);
 
                                 if (!hashmap_get(visited, k)) {
                                     priqueue_insert_increase(&queue, k,
@@ -177,7 +177,7 @@ static size_t solve(floor_t *_floors, size_t amt_floors) {
                     if (!floors[depth].data[pod_ind]) {
                         int64_t new_energy =
                             energy - (depth + 1 + abs_diff(room_ind, i)) *
-                                         pow10(pod_ind);
+                                         ipow10(pod_ind);
 
                         floors[depth].data[pod_ind] = pod_ind + 1;
 
