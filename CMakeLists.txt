@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(AoC_2021_C)
+project(AoC_2021_C C)
 
 include_directories(${AOC_UTIL_INSTALL}/include)
 
