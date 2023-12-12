@@ -46,7 +46,7 @@ static int key_cmp(const void *a, const void *b, void *udata) {
 }
 
 static point_t rec(key_t k, struct hashmap *memo) {
-    key_t *memo_res = hashmap_get(memo, &k);
+    key_t *memo_res = (key_t *)hashmap_get(memo, &k);
     if (memo_res) {
         return memo_res->universes;
     } else if (k.score.a >= 21) {
