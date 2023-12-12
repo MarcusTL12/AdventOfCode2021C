@@ -6,7 +6,8 @@ import os
 
 from time import time
 
-c_compiler = "clang-12"
+c_compiler = "clang"
+# c_compiler = None
 
 buildsystem = "Ninja"
 # buildsystem = '"Unix Makefiles"'
@@ -15,6 +16,10 @@ if len(sys.argv) >= 2 and sys.argv[1] == "debug":
     cfg = "Debug"
 else:
     cfg = "Release"
+
+print(f"Compiling in {cfg} mode")
+
+extra_flags = "-march=native"
 
 if not os.path.exists("build"):
     os.mkdir("build")
@@ -31,8 +36,10 @@ os.chdir("aoc_util")
 aoc_util_command = ["cmake"]
 aoc_util_command.append("../../AoC_C_utils/")
 aoc_util_command.append(f"-DCMAKE_INSTALL_PREFIX={cfg}")
-aoc_util_command.append(f"-DCMAKE_C_COMPILER={c_compiler}")
+if c_compiler is not None:
+    aoc_util_command.append(f"-DCMAKE_C_COMPILER={c_compiler}")
 aoc_util_command.append(f"-DCMAKE_BUILD_TYPE={cfg}")
+aoc_util_command.append(f"-DCMAKE_C_FLAGS={extra_flags}")
 aoc_util_command.append(f"-G{buildsystem}")
 
 subprocess.call(' '.join(aoc_util_command), shell=True)
@@ -50,9 +57,12 @@ os.chdir("aoc")
 aoc_command = ["cmake"]
 aoc_command.append("../../")
 aoc_command.append(f"-DAOC_UTIL_INSTALL=build/aoc_util/{cfg}")
-aoc_command.append(f"-DCMAKE_C_COMPILER={c_compiler}")
+if c_compiler is not None:
+    aoc_command.append(f"-DCMAKE_C_COMPILER={c_compiler}")
 aoc_command.append(f"-DCMAKE_BUILD_TYPE={cfg}")
+aoc_command.append(f"-DCMAKE_C_FLAGS={extra_flags}")
 aoc_command.append(f"-G{buildsystem}")
 
 subprocess.call(' '.join(aoc_command), shell=True)
 subprocess.call("cmake --build .", shell=True)
+
